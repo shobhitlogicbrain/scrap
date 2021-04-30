@@ -1,0 +1,98 @@
+from app_store_scraper import AppStore
+from pprint import pprint
+import pandas as pd
+import time
+# import requests
+# from requests.adapters import HTTPAdapter
+# from requests.packages.urllib3.util.retry import Retry
+
+
+mine = AppStore(country="us", app_name="514374715")
+mine.review()
+
+#pprint(mine.reviews)
+pprint(mine.reviews_count)
+
+
+OUTPUT_PATH = r"D:\EU_data\output_file"
+
+df = pd.read_csv(r"D:\EU_data\input_file\AppleAppsList_sample.txt",encoding='latin1')
+
+for rec in df.to_dict("records"):
+    
+    app_id = rec["AppLink"].split("/")[-1].replace("id","")
+    app_name = rec["BankName"]
+    file_name = rec["BankName"]
+    print(app_name)
+    app1 = AppStore(country="us",app_name=app_name, app_id=app_id)
+    app1.review()
+    time.sleep(15)
+    pd.DataFrame(app1.reviews).to_csv(OUTPUT_PATH+"/"+file_name+'.csv',index=False,doublequote=True)
+    
+    
+    BankName,AppLink
+Ally Mobile,https://apps.apple.com/us/app/ally-mobile/id514374715
+Bank Of America Mobile Banking,https://apps.apple.com/us/app/bank-of-america-mobile-banking/id284847138
+Capital One Mobile,https://apps.apple.com/us/app/capital-one-mobile/id407558537
+Schwab Mobile,https://apps.apple.com/us/app/schwab-mobile/id407358186
+Citi Mobile,https://apps.apple.com/us/app/citi-mobile/id301724680
+Citizens Bank Mobile Banking,https://apps.apple.com/us/app/citizens-bank-mobile-banking/id388082488
+Discover Mobile,https://apps.apple.com/us/app/discover-mobile/id338010821
+Fifth Third Mobile Banking,https://apps.apple.com/us/app/fifth-third-mobile-banking/id468738585
+First Republic Mobile,https://apps.apple.com/us/app/first-republic-mobile/id1054171690
+Marcus By Goldman Sachs,https://apps.apple.com/us/app/marcus-by-goldman-sachs/id1489511701
+Hsbc Us,https://apps.apple.com/us/app/hsbc-us/id1344750175
+Chase Mobile,https://apps.apple.com/us/app/chase-mobile/id298867247
+Keybank Mobile,https://apps.apple.com/us/app/keybank-mobile/id510717503
+Morgan Stanley Wealth Mgmt,https://apps.apple.com/us/app/morgan-stanley-wealth-mgmt/id811512122
+Union Bank Mobile Banking,https://apps.apple.com/us/app/union-bank-mobile-banking/id720516210
+Pnc Mobile Banking,https://apps.apple.com/us/app/pnc-mobile-banking/id303113127
+Regions Mobile,https://apps.apple.com/us/app/regions-mobile/id417970539
+State Street Bank Mobile,https://apps.apple.com/us/app/state-street-bank-mobile/id570763537
+Amex,https://apps.apple.com/us/app/amex/id362348516
+Td Bank Us,https://apps.apple.com/us/app/td-bank-us/id382107453
+Bny Mellon Private Banking,https://apps.apple.com/us/app/bny-mellon-private-banking/id495082171
+Huntington Mobile,https://apps.apple.com/us/app/huntington-mobile/id441599004
+Suntrust Mobile App,https://apps.apple.com/us/app/suntrust-mobile-app/id458680449
+U S Bank,https://apps.apple.com/us/app/u-s-bank/id458734623
+Wells Fargo Mobile,https://apps.apple.com/us/app/wells-fargo-mobile/id311548709
+Arvest Go Mobile Banking,https://apps.apple.com/us/app/arvest-go-mobile-banking/id1210438422
+Associated Bank Mobile,https://apps.apple.com/us/app/associated-bank-mobile/id432205157
+Bank Of The West Mobile App,https://apps.apple.com/us/app/bank-of-the-west-mobile-app/id428713765
+Cbt Mobile Banking,https://apps.apple.com/us/app/cbt-mobile-banking/id449071371
+Carter On The Go,https://apps.apple.com/us/app/carter-on-the-go/id1443492630
+Commerce Bank For Iphone,https://apps.apple.com/us/app/commerce-bank-for-iphone/id535981874
+The Community Bank Mobile,https://apps.apple.com/us/app/the-community-bank-mobile/id965354322
+East West Bank Mobile Banking,https://apps.apple.com/us/app/east-west-bank-mobile-banking/id689532225
+First Citizens Mobile Banking,https://apps.apple.com/us/app/first-citizens-mobile-banking/id553624402
+First Commonwealth Banking,https://apps.apple.com/us/app/first-commonwealth-banking/id1520057905
+Fnbt Fcb Mobile,https://apps.apple.com/us/app/fnbt-fcb-mobile/id1470617240
+Flagstar Mobile,https://apps.apple.com/us/app/flagstar-mobile/id1441320893
+M T Mobile Banking,https://apps.apple.com/us/app/m-t-mobile-banking/id397761931
+Nbt Bank,https://apps.apple.com/us/app/nbt-bank/id711575888
+Nycb Mobile,https://apps.apple.com/us/app/nycb-mobile/id972805390
+Old National Mobile,https://apps.apple.com/us/app/old-national-mobile/id996569976
+Santander Bank Us,https://apps.apple.com/us/app/santander-bank-us/id613009563
+Webster Bank Mobile,https://apps.apple.com/us/app/webster-bank-mobile/id1321994487
+Zions Bank Mobile Banking,https://apps.apple.com/us/app/zions-bank-mobile-banking/id337012799
+Aspiration Spend Save Invest,https://apps.apple.com/us/app/aspiration-spend-save-invest/id1074342516
+Azlo Easy Business Banking,https://apps.apple.com/us/app/azlo-easy-business-banking/id1266213406
+Mybambu,https://apps.apple.com/us/app/mybambu/id1477390666
+Chime Mobile Banking,https://apps.apple.com/us/app/chime-mobile-banking/id836215269
+Current Bank For Modern Life,https://apps.apple.com/us/app/current-bank-for-modern-life/id1077366211
+Dave Banking For Humans,https://apps.apple.com/us/app/dave-banking-for-humans/id1193801909
+Gobank Mobile Banking,https://apps.apple.com/us/app/gobank-mobile-banking/id535272164
+Greenlight Debit Card For Kids,https://apps.apple.com/us/app/greenlight-debit-card-for-kids/id1049340702
+Hmbradley Mobile Banking,https://apps.apple.com/us/app/hmbradley-mobile-banking/id1513277120
+Mercury Banking For Startups,https://apps.apple.com/us/app/mercury-banking-for-startups/id1491984028
+Moneylion Mobile Banking,https://apps.apple.com/us/app/moneylion-mobile-banking/id1064677082
+Novo Business Banking,https://apps.apple.com/us/app/novo-business-banking/id1375554760
+Oxygen Banking Modern Finance,https://apps.apple.com/us/app/oxygen-banking-modern-finance/id1486762009
+Point Debit Card,https://apps.apple.com/us/app/point-debit-card/id1470307568
+Sable,https://apps.apple.com/us/app/sable/id1474654292
+Simple Mobile Banking,https://apps.apple.com/us/app/simple-mobile-banking/id479317486
+Stash Invest Build Wealth,https://apps.apple.com/us/app/stash-invest-build-wealth/id1017148055
+Step Teen Banking,https://apps.apple.com/us/app/step-teen-banking/id1438006983
+Varo Mobile Banking,https://apps.apple.com/us/app/varo-mobile-banking/id1108582739
+Zero,https://apps.apple.com/us/app/zero/id1147308193
+
