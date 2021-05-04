@@ -96,3 +96,8 @@ Step Teen Banking,https://apps.apple.com/us/app/step-teen-banking/id1438006983
 Varo Mobile Banking,https://apps.apple.com/us/app/varo-mobile-banking/id1108582739
 Zero,https://apps.apple.com/us/app/zero/id1147308193
 
+
+
+pd.DataFrame(app1.reviews)
+    app2=pd.DataFrame(app1.reviews)
+    app2[['Bank_Name','Country']]=app_name,country_n
